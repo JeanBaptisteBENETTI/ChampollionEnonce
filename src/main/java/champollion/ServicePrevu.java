@@ -33,6 +33,24 @@ public class ServicePrevu {
         return volumeTP;
     }
 
+    public int getVolumeGeneral(TypeIntervention type) {
+        int resultat = 0;
+        switch (type) {
+            case CM:
+                resultat = getVolumeCM();
+                break;
+
+            case TD:
+                resultat = getVolumeTD();
+                break;
+
+            case TP:
+                resultat = getVolumeTP();
+                break;
+        }
+        return resultat;
+    }
+
     public UE getUe() {
         return ue;
     }
@@ -52,6 +70,7 @@ public class ServicePrevu {
     public void setVolumeTP(int volumeTP) {
         this.volumeTP = volumeTP;
     }
+
 
     @Override
     public String toString() {

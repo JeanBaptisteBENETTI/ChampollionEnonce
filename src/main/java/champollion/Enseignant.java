@@ -90,8 +90,22 @@ public class Enseignant extends Personne {
         lesInterventions.add(intervention);
     }
 
-    //public int resteAPlanifier(UE ue, TypeIntervention typeInter) {
+    public int resteAPlanifier(UE ue, TypeIntervention typeInter) {
+        double heurePlanifie = 0;
 
-    //}
+        ServicePrevu s = lesEnseignements.get(ue);
+        if (s == null) {
+            return 0;
+        }
+
+        double heureAPlanifie = s.getVolumeGeneral(typeInter);
+
+        for (Intervention inter : lesInterventions) {
+            if ((ue.equals(inter.getUe())) && (typeInter.equals(inter.getTypeInter()))) {
+                heurePlanifie += inter.getDuree();
+            }
+        }
+        return (int) Math.round(Math.abs(heurePlanifie - heureAPlanifie));
+    }
 
 }
