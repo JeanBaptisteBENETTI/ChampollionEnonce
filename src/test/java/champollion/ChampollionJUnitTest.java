@@ -1,6 +1,9 @@
 package champollion;
 
 import org.junit.jupiter.api.*;
+
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ChampollionJUnitTest {
@@ -20,7 +23,12 @@ public class ChampollionJUnitTest {
 		assertEquals(0, untel.heuresPrevues(),
                         "Un nouvel enseignant doit avoir 0 heures prévues");
 	}
-	
+
+	/*@Test
+	public void testNouvelEnseignantSansUE() {
+		assertTrue(untel.heuresPrevues().isEmpty());
+	}*/
+
 	@Test
 	public void testAjouteHeures() {
                 // 10h TD pour UML
@@ -37,6 +45,13 @@ public class ChampollionJUnitTest {
 		
 	}
 
-
+	@Test
+	public void testAPlanifier() {
+		untel.ajouteEnseignement(uml, 0, 10, 0);
+		Date date = new Date("13/12/2022");
+		Intervention inter = new Intervention(date, 1, false, 10);
+		//untel.ajouteIntervention(inter);
+		assertEquals(0, untel.resteAPlanifier(uml, TypeIntervention.CM), "Erreur, il n'y a pas assez d'heure planifiées");
+	}
 	
 }

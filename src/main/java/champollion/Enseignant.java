@@ -17,6 +17,7 @@ public class Enseignant extends Personne {
         super(nom, email);
         lesServicesPrevus = new ArrayList<>();
         lesInterventions = new ArrayList<>();
+        lesEnseignements = new HashMap<>();
     }
 
     /**
